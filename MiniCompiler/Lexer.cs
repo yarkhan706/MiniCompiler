@@ -27,6 +27,11 @@ namespace MiniCompiler
             Line = line;
             Column = column;
         }
+
+        public override string ToString()
+        {
+            return $"[{Type}] {Value} (Line: {Line}, Column: {Column})";
+        }
     }
 
     public class Lexer
@@ -39,6 +44,11 @@ namespace MiniCompiler
         private readonly HashSet<string> _keywords = new HashSet<string>
         {
             "int", "float", "if", "else", "while", "for", "return"
+        };
+
+        private readonly HashSet<string> _multiCharOperators = new HashSet<string>
+        {
+            "==", "!=", "<=", ">=", "&&", "||"
         };
 
         public Lexer(string sourceCode)
@@ -69,7 +79,7 @@ namespace MiniCompiler
                 {
                     tokens.Add(HandleNumber());
                 }
-                else if ("+-*/=<>!".Contains(currentChar))
+                else if ("+-*/=<>!&|".Contains(currentChar))
                 {
                     tokens.Add(HandleOperator());
                 }
@@ -124,9 +134,17 @@ namespace MiniCompiler
         {
             int startColumn = _column;
             int startIndex = _currentIndex;
+            bool isFloatingPoint = false;
 
-            while (_currentIndex < _sourceCode.Length && char.IsDigit(_sourceCode[_currentIndex]))
+            while (_currentIndex < _sourceCode.Length && (char.IsDigit(_sourceCode[_currentIndex]) || _sourceCode[_currentIndex] == '.'))
             {
+                if (_sourceCode[_currentIndex] == '.')
+                {
+                    if (isFloatingPoint)
+                        throw new Exception($"Unexpected '.' in number at Line {_line}, Column {_column}");
+                    isFloatingPoint = true;
+                }
+
                 Advance();
             }
 
@@ -138,6 +156,21 @@ namespace MiniCompiler
         private Token HandleOperator()
         {
             int startColumn = _column;
+            int startIndex = _currentIndex;
+
+            // Handle multi-character operators (e.g., ==, !=, <=, >=)
+            if (_currentIndex + 1 < _sourceCode.Length)
+            {
+                string potentialOperator = _sourceCode.Substring(_currentIndex, 2);
+                if (_multiCharOperators.Contains(potentialOperator))
+                {
+                    Advance();
+                    Advance();
+                    return new Token(TokenType.Operator, potentialOperator, _line, startColumn);
+                }
+            }
+
+            // Handle single-character operators
             char currentChar = _sourceCode[_currentIndex];
             Advance();
             return new Token(TokenType.Operator, currentChar.ToString(), _line, startColumn);

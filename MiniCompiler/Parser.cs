@@ -30,7 +30,7 @@ namespace MiniCompiler
         {
             Token current = Peek();
 
-            if (current.Type == TokenType.Keyword && current.Value == "int")
+            if (current.Type == TokenType.Keyword && (current.Value == "int" || current.Value == "float"))
             {
                 return ParseDeclaration();
             }
@@ -46,20 +46,33 @@ namespace MiniCompiler
             {
                 return ParseWhileStatement();
             }
+            else if (current.Type == TokenType.Keyword && current.Value == "for")
+            {
+                return ParseForLoop();
+            }
             else if (current.Value == "{")
             {
                 return ParseBlock();
             }
             else
             {
-                throw new Exception($"Unexpected token: {current.Value}");
+                throw new Exception($"Unexpected token: {current.Value} at Line {current.Line}, Column {current.Column}");
             }
         }
 
         private StatementNode ParseDeclaration()
         {
-            Consume("int"); // Match "int"
+            string type = Consume(TokenType.Keyword).Value; // Match "int" or "float"
             Token identifier = Consume(TokenType.Identifier); // Match variable name
+
+            ExpressionNode initializer = null;
+
+            // Handle optional initialization
+            if (Match("="))
+            {
+                initializer = ParseExpression(); // Parse the right-hand expression
+            }
+
             Consume(";"); // Match ";"
 
             return new StatementNode
@@ -67,24 +80,33 @@ namespace MiniCompiler
                 StatementType = "Declaration",
                 Expression = new ExpressionNode
                 {
-                    Value = identifier.Value
+                    Value = $"{type} {identifier.Value}",
+                    Operator = initializer != null ? "=" : null,
+                    Right = initializer
                 }
             };
         }
+
 
         private StatementNode ParseAssignment()
         {
             Token identifier = Consume(TokenType.Identifier); // Match variable name
             Consume("="); // Match "="
-            var expression = ParseExpression();
+            var expression = ParseExpression(); // Parse the right-hand expression
             Consume(";"); // Match ";"
 
             return new StatementNode
             {
                 StatementType = "Assignment",
-                Expression = expression
+                Expression = new ExpressionNode
+                {
+                    Left = new ExpressionNode { Value = identifier.Value },
+                    Operator = "=",
+                    Right = expression
+                }
             };
         }
+
 
         private StatementNode ParseIfStatement()
         {
@@ -107,6 +129,7 @@ namespace MiniCompiler
                 Expression = new ExpressionNode
                 {
                     Left = condition,
+                    Operator = "if",
                     Right = new ExpressionNode
                     {
                         Left = thenBlock,
@@ -131,7 +154,40 @@ namespace MiniCompiler
                 Expression = new ExpressionNode
                 {
                     Left = condition,
+                    Operator = "while",
                     Right = body
+                }
+            };
+        }
+
+        private StatementNode ParseForLoop()
+        {
+            Consume("for");
+            Consume("(");
+            var initialization = ParseStatement();
+            var condition = ParseExpression();
+            Consume(";");
+            var increment = ParseStatement();
+            Consume(")");
+
+            var body = ParseBlock();
+
+            return new StatementNode
+            {
+                StatementType = "For",
+                Expression = new ExpressionNode
+                {
+                    Left = initialization,
+                    Operator = "for",
+                    Right = new ExpressionNode
+                    {
+                        Left = condition,
+                        Right = new ExpressionNode
+                        {
+                            Left = increment,
+                            Right = body
+                        }
+                    }
                 }
             };
         }
@@ -143,6 +199,7 @@ namespace MiniCompiler
             var statements = new List<SyntaxNode>();
             while (!Check("}"))
             {
+                if (IsAtEnd()) throw new Exception("Unclosed block at EOF");
                 statements.Add(ParseStatement());
             }
 
@@ -155,14 +212,12 @@ namespace MiniCompiler
 
         private ExpressionNode ParseExpression()
         {
-            // Parse the first AdditiveExpression
             var left = ParseAdditiveExpression();
 
-            // Handle relational operators
             while (Match("<", ">", "<=", ">=", "==", "!="))
             {
-                string op = Previous().Value; // Get the relational operator
-                var right = ParseAdditiveExpression(); // Parse the right-hand expression
+                string op = Previous().Value;
+                var right = ParseAdditiveExpression();
                 left = new ExpressionNode
                 {
                     Operator = op,
@@ -180,7 +235,7 @@ namespace MiniCompiler
 
             while (Match("+", "-"))
             {
-                string op = Previous().Value; // Get the operator
+                string op = Previous().Value;
                 var right = ParseMultiplicativeExpression();
                 left = new ExpressionNode
                 {
@@ -199,7 +254,7 @@ namespace MiniCompiler
 
             while (Match("*", "/"))
             {
-                string op = Previous().Value; // Get the operator
+                string op = Previous().Value;
                 var right = ParseFactor();
                 left = new ExpressionNode
                 {
@@ -225,12 +280,12 @@ namespace MiniCompiler
             else if (Match("("))
             {
                 var expr = ParseExpression();
-                Consume(")"); // Ensure closing parenthesis is consumed
+                Consume(")");
                 return expr;
             }
             else
             {
-                throw new Exception("Expected a number, identifier, or '('");
+                throw new Exception($"Expected a number, identifier, or '(' but found '{Peek().Value}' at Line {Peek().Line}, Column {Peek().Column}");
             }
         }
 
@@ -244,7 +299,7 @@ namespace MiniCompiler
         private Token Consume(TokenType type)
         {
             if (Check(type)) return Advance();
-            throw new Exception($"Expected '{type}' but found '{Peek().Type}'");
+            throw new Exception($"Expected token of type '{type}' but found '{Peek().Type}'");
         }
 
         private bool Match(params string[] values)

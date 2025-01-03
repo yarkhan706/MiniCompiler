@@ -36,7 +36,11 @@
             Line = new DataGridViewTextBoxColumn();
             Column = new DataGridViewTextBoxColumn();
             btnParse = new Button();
-            txtResult = new TextBox();
+            txtOutput = new TextBox();
+            btnCompile = new Button();
+            btnHelloWorld = new Button();
+            btnSum = new Button();
+            btnClear = new Button();
             ((System.ComponentModel.ISupportInitialize)dataGridViewTokens).BeginInit();
             SuspendLayout();
             // 
@@ -51,6 +55,7 @@
             // 
             // btnTokenize
             // 
+            btnTokenize.Cursor = Cursors.Hand;
             btnTokenize.Location = new Point(21, 245);
             btnTokenize.Name = "btnTokenize";
             btnTokenize.Size = new Size(75, 23);
@@ -97,7 +102,8 @@
             // 
             // btnParse
             // 
-            btnParse.Location = new Point(113, 245);
+            btnParse.Cursor = Cursors.Hand;
+            btnParse.Location = new Point(102, 245);
             btnParse.Name = "btnParse";
             btnParse.Size = new Size(75, 23);
             btnParse.TabIndex = 3;
@@ -105,27 +111,75 @@
             btnParse.UseVisualStyleBackColor = true;
             btnParse.Click += btnParse_Click;
             // 
-            // txtResult
+            // txtOutput
             // 
-            txtResult.Location = new Point(492, 42);
-            txtResult.Multiline = true;
-            txtResult.Name = "txtResult";
-            txtResult.ScrollBars = ScrollBars.Vertical;
-            txtResult.Size = new Size(277, 186);
-            txtResult.TabIndex = 4;
+            txtOutput.Location = new Point(492, 42);
+            txtOutput.Multiline = true;
+            txtOutput.Name = "txtOutput";
+            txtOutput.ScrollBars = ScrollBars.Vertical;
+            txtOutput.Size = new Size(277, 186);
+            txtOutput.TabIndex = 4;
+            // 
+            // btnCompile
+            // 
+            btnCompile.Cursor = Cursors.Hand;
+            btnCompile.Location = new Point(183, 245);
+            btnCompile.Name = "btnCompile";
+            btnCompile.Size = new Size(75, 23);
+            btnCompile.TabIndex = 5;
+            btnCompile.Text = "Compile";
+            btnCompile.UseVisualStyleBackColor = true;
+            btnCompile.Click += btnCompile_Click;
+            // 
+            // btnHelloWorld
+            // 
+            btnHelloWorld.Cursor = Cursors.Hand;
+            btnHelloWorld.Location = new Point(21, 13);
+            btnHelloWorld.Name = "btnHelloWorld";
+            btnHelloWorld.Size = new Size(89, 23);
+            btnHelloWorld.TabIndex = 6;
+            btnHelloWorld.Text = "Hello World";
+            btnHelloWorld.UseVisualStyleBackColor = true;
+            btnHelloWorld.Click += btnHelloWorld_Click;
+            // 
+            // btnSum
+            // 
+            btnSum.Cursor = Cursors.Hand;
+            btnSum.Location = new Point(116, 13);
+            btnSum.Name = "btnSum";
+            btnSum.Size = new Size(75, 23);
+            btnSum.TabIndex = 7;
+            btnSum.Text = "sum till 10";
+            btnSum.UseVisualStyleBackColor = true;
+            btnSum.Click += btnSum_Click;
+            // 
+            // btnClear
+            // 
+            btnClear.Location = new Point(264, 245);
+            btnClear.Name = "btnClear";
+            btnClear.Size = new Size(75, 23);
+            btnClear.TabIndex = 8;
+            btnClear.Text = "Clear";
+            btnClear.UseVisualStyleBackColor = true;
+            btnClear.Click += btnClear_Click;
             // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackColor = SystemColors.ActiveCaption;
             ClientSize = new Size(800, 450);
-            Controls.Add(txtResult);
+            Controls.Add(btnClear);
+            Controls.Add(btnSum);
+            Controls.Add(btnHelloWorld);
+            Controls.Add(btnCompile);
+            Controls.Add(txtOutput);
             Controls.Add(btnParse);
             Controls.Add(dataGridViewTokens);
             Controls.Add(btnTokenize);
             Controls.Add(txtSourceCode);
             Name = "Form1";
-            Text = "Form1";
+            Text = "C compiler";
             ((System.ComponentModel.ISupportInitialize)dataGridViewTokens).EndInit();
             ResumeLayout(false);
             PerformLayout();
@@ -141,6 +195,10 @@
         private DataGridViewTextBoxColumn Line;
         private DataGridViewTextBoxColumn Column;
         private Button btnParse;
-        private TextBox txtResult;
+        private TextBox txtOutput;
+        private Button btnCompile;
+        private Button btnHelloWorld;
+        private Button btnSum;
+        private Button btnClear;
     }
 }
