@@ -1,0 +1,14 @@
+C:\Users\yarkh\source\repos\GalaxyShooter\GalaxyShooter\bin\Debug\net8.0\GalaxyShooter.exe
+C:\Users\yarkh\source\repos\GalaxyShooter\GalaxyShooter\bin\Debug\net8.0\GalaxyShooter.deps.json
+C:\Users\yarkh\source\repos\GalaxyShooter\GalaxyShooter\bin\Debug\net8.0\GalaxyShooter.runtimeconfig.json
+C:\Users\yarkh\source\repos\GalaxyShooter\GalaxyShooter\bin\Debug\net8.0\GalaxyShooter.dll
+C:\Users\yarkh\source\repos\GalaxyShooter\GalaxyShooter\bin\Debug\net8.0\GalaxyShooter.pdb
+C:\Users\yarkh\source\repos\GalaxyShooter\GalaxyShooter\obj\Debug\net8.0\GalaxyShooter.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\yarkh\source\repos\GalaxyShooter\GalaxyShooter\obj\Debug\net8.0\GalaxyShooter.AssemblyInfoInputs.cache
+C:\Users\yarkh\source\repos\GalaxyShooter\GalaxyShooter\obj\Debug\net8.0\GalaxyShooter.AssemblyInfo.cs
+C:\Users\yarkh\source\repos\GalaxyShooter\GalaxyShooter\obj\Debug\net8.0\GalaxyShooter.csproj.CoreCompileInputs.cache
+C:\Users\yarkh\source\repos\GalaxyShooter\GalaxyShooter\obj\Debug\net8.0\GalaxyShooter.dll
+C:\Users\yarkh\source\repos\GalaxyShooter\GalaxyShooter\obj\Debug\net8.0\refint\GalaxyShooter.dll
+C:\Users\yarkh\source\repos\GalaxyShooter\GalaxyShooter\obj\Debug\net8.0\GalaxyShooter.pdb
+C:\Users\yarkh\source\repos\GalaxyShooter\GalaxyShooter\obj\Debug\net8.0\GalaxyShooter.genruntimeconfig.cache
+C:\Users\yarkh\source\repos\GalaxyShooter\GalaxyShooter\obj\Debug\net8.0\ref\GalaxyShooter.dll

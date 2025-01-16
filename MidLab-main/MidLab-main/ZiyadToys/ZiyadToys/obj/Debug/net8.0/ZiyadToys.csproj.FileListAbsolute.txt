@@ -1,0 +1,15 @@
+C:\Users\yarkh\source\repos\ZiyadToys\ZiyadToys\bin\Debug\net8.0\ZiyadToys.exe
+C:\Users\yarkh\source\repos\ZiyadToys\ZiyadToys\bin\Debug\net8.0\ZiyadToys.deps.json
+C:\Users\yarkh\source\repos\ZiyadToys\ZiyadToys\bin\Debug\net8.0\ZiyadToys.runtimeconfig.json
+C:\Users\yarkh\source\repos\ZiyadToys\ZiyadToys\bin\Debug\net8.0\ZiyadToys.dll
+C:\Users\yarkh\source\repos\ZiyadToys\ZiyadToys\bin\Debug\net8.0\ZiyadToys.pdb
+C:\Users\yarkh\source\repos\ZiyadToys\ZiyadToys\obj\Debug\net8.0\ZiyadToys.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\yarkh\source\repos\ZiyadToys\ZiyadToys\obj\Debug\net8.0\ZiyadToys.AssemblyInfoInputs.cache
+C:\Users\yarkh\source\repos\ZiyadToys\ZiyadToys\obj\Debug\net8.0\ZiyadToys.AssemblyInfo.cs
+C:\Users\yarkh\source\repos\ZiyadToys\ZiyadToys\obj\Debug\net8.0\ZiyadToys.csproj.CoreCompileInputs.cache
+C:\Users\yarkh\source\repos\ZiyadToys\ZiyadToys\obj\Debug\net8.0\ZiyadToys.dll
+C:\Users\yarkh\source\repos\ZiyadToys\ZiyadToys\obj\Debug\net8.0\refint\ZiyadToys.dll
+C:\Users\yarkh\source\repos\ZiyadToys\ZiyadToys\obj\Debug\net8.0\ZiyadToys.pdb
+C:\Users\yarkh\source\repos\ZiyadToys\ZiyadToys\obj\Debug\net8.0\ZiyadToys.genruntimeconfig.cache
+C:\Users\yarkh\source\repos\ZiyadToys\ZiyadToys\obj\Debug\net8.0\ref\ZiyadToys.dll
+C:\Users\yarkh\source\repos\ZiyadToys\ZiyadToys\obj\Debug\net8.0\ZiyadToys.sourcelink.json
