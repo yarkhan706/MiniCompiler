@@ -1,0 +1,6 @@
+D:\BSCS Notes New\7th Semester\Compiler Construction\Lab New\Lab02-RegularExpression\Lab02-RegularExpression\bin\Debug\Lab02-RegularExpression.exe.config
+D:\BSCS Notes New\7th Semester\Compiler Construction\Lab New\Lab02-RegularExpression\Lab02-RegularExpression\bin\Debug\Lab02-RegularExpression.exe
+D:\BSCS Notes New\7th Semester\Compiler Construction\Lab New\Lab02-RegularExpression\Lab02-RegularExpression\bin\Debug\Lab02-RegularExpression.pdb
+D:\BSCS Notes New\7th Semester\Compiler Construction\Lab New\Lab02-RegularExpression\Lab02-RegularExpression\obj\Debug\Lab02-RegularExpression.csprojResolveAssemblyReference.cache
+D:\BSCS Notes New\7th Semester\Compiler Construction\Lab New\Lab02-RegularExpression\Lab02-RegularExpression\obj\Debug\Lab02-RegularExpression.exe
+D:\BSCS Notes New\7th Semester\Compiler Construction\Lab New\Lab02-RegularExpression\Lab02-RegularExpression\obj\Debug\Lab02-RegularExpression.pdb
